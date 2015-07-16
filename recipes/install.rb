@@ -77,14 +77,15 @@ when 'rhel', 'redhat', 'centos', 'amazon', 'scientific'
   end
 
   # get the version-release string via repoquery
-  cmd = Mixlib::ShellOut.new("repoquery --queryformat '%{VERSION}-%{RELEASE}' -q mesos-#{node['mesos']['version']}*")
-  cmd.run_command
-  cmd.error!
-  rpm_version = cmd.stdout.strip
+#  cmd = Mixlib::ShellOut.new("repoquery --queryformat '%{VERSION}-%{RELEASE}' -q mesos-#{node['mesos']['version']}*")
+#  cmd.run_command
+#  cmd.error!
+#  rpm_version = cmd.stdout.strip
 
   yum_package 'mesos' do
-    version rpm_version
-    not_if { ::File.exist? '/usr/local/sbin/mesos-master' }
+#    version rpm_version
+    version '0.22.1-1.0.centos65'
+    not_if { ::File.exist? '/usr/sbin/mesos-master' }
   end
 end
 
