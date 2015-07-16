@@ -1,5 +1,5 @@
 # Enable default repo
-default['mesos']['repo']    = true
+default['mesos']['repo']    = false
 
 # Mesosphere Mesos version.
 default['mesos']['version'] = '0.21.1'
